@@ -1,1 +1,5 @@
+<% @users.each do |user| %>
+   <%= link_to user.name, user %><br/>
+<% end %>
 <%= link_to "New User", new_user_path %>
+<%= link_to "login", login_path%>

@@ -1,2 +1,6 @@
 <%= @user.name%><br/>
-<%= @user.email%>
+<%= @user.email%><br/>
+<%= current_user.name %>
+<%= current_user.email %>
+<%= link_to "back", users_path%>
+<%= link_to "logout", logout_path %>
