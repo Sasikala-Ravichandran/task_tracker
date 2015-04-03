@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>TaskTracker</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
+	<head>
+	  <title>Task Tracker</title>
+	  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	  <%= render 'layouts/shim' %>
+	</head>
+	<body>
+		<%= render 'layouts/header' %>
+		
+		    <div class="container">
+		<%= yield %>
+		</div>
+		<%= render 'layouts/footer' %>
 </body>
 </html>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
- 
+  root 'welcome#home'
+
   resources :tasks
   resources :users
   resources :relations do

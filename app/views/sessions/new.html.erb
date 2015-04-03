@@ -1,12 +1,14 @@
-<%= form_for(:session, url: login_path) do |f| %>
-
+ <div class="center jumbotron">
+ 	<%= form_for(:session, url: login_path) do |f| %>
+ 
       <%= f.label :email %>
-      <%= f.email_field :email %>
+      <%= f.email_field :email %><br/>
 
       <%= f.label :password %>
-      <%= f.password_field :password %>
-
+      <%= f.password_field :password %><br/>
+<br/>
       <%= f.submit "Log in" %>
     <% end %>
-
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+<br/>
+    <p>New user? <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"%></p>
+</div>
