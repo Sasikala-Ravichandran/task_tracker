@@ -1,0 +1,7 @@
+<%= @relation.id %>
+<%= form_tag verify_relation_path, :method => :get do  %>
+	<%= hidden_field_tag :relation_id, @relation.id %> 
+	<%= text_field_tag :account_id %> 
+   	<%= email_field_tag :email %>
+   	<%= submit_tag("link to partner")%>
+ <% end %>

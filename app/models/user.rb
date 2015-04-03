@@ -10,6 +10,17 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
 
 	has_secure_password
-	validates :password, length: { minimum: 6 }
+	validates :password, length: { minimum: 2 }
+
+	has_many :actives, class_name: "Relation", dependent: :destroy
+	has_many :patners, through: :actives
+ 	
+ 	has_many :passives, class_name: "Relation", 
+ 						foreign_key: "patner_id", 
+ 						dependent: :destroy
+    has_many :users, through: :passives
+
+    has_many :tasks
+
 end
 
