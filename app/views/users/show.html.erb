@@ -2,46 +2,44 @@
 <%= @user.email%><br/>
 <%= current_user.name %>
 <%= current_user.email %>
- 
+
 <%= button_to "Create a partner", new_relation_path, :method => :get %>
  <br/>
-
-  <% @user.passives.each do |relation| %>
-        <% unless relation.verified %>
-             Relation_id: <%= relation.id %><br/>
-             <%= link_to "link_to_partner #{User.find(relation.user_id).name}", complete_relation_path(relation), :method => :get  %>
-        <% end %>
+<% @user.passives.each do |relation| %>
+  <% unless relation.verified %>
+    Relation_id: <%= relation.id %><br/>
+    <%= link_to "link_to_partner #{User.find(relation.user_id).name}", complete_relation_path(relation), :method => :get  %>
   <% end %>
+<% end %>
 <br/>
 Final patner:<br/>
- <%  @user.actives.each do |relation| %>
-     <% if relation.verified %>
-        <% user = User.find(relation.patner_id)%><br/>
-        <%= Task.group_tasks(relation.id, current_user.id).pluck(:name)%>
-        <%= link_to "Add task", new_task_path(relation_id: relation.id) %><br/>
-        <%= user.name %>
-        <%= user.id %>
-        <%= relation.id %>
-        <%= Task.group_tasks(relation.id, user.id).pluck(:name)%>
-     <% end %>
- <% end %>
- <br/>sasi<br/>
- <%  @user.passives.each do |relation| %>
-     <% if relation.verified %>
-        <% user = User.find(relation.user_id)%><br/>
-          <%= Task.group_tasks(relation.id, current_user.id).pluck(:name)%>
-        <%= link_to "Add task", new_task_path(relation_id: relation.id) %><br/>
-         <br/> Partners:
-         <%= user.name %>
-        <%= user.id %>
-        <%= relation.id %>
-        <%= Task.group_tasks(relation.id, user.id).pluck(:name)%>
-     <% end %>
- <% end %>
+<%  @user.actives.each do |relation| %>
+  <% if relation.verified %>
+    <% user = User.find(relation.patner_id)%><br/>
+    <%= user.name %>
+    <%= Task.group_tasks(relation.id, current_user.id).pluck(:name)%>
+    <%= link_to "Add task", new_task_path(relation_id: relation.id) %><br/>
+    <%= user.name %>
+    <%= user.id %>
+    <%= relation.id %>
+    <%= Task.group_tasks(relation.id, user.id).pluck(:name)%>
+  <% end %>
+<% end %>
+
+<%  @user.passives.each do |relation| %>
+  <% if relation.verified %>
+    <% user = User.find(relation.user_id)%><br/>
+    <%= user.name %>
+    <%= Task.group_tasks(relation.id, current_user.id).pluck(:name)%>
+    <%= link_to "Add task", new_task_path(relation_id: relation.id) %><br/>
+    <br/> Partners:
+    <%= user.name %>
+    <%= user.id %>
+    <%= relation.id %>
+    <%= Task.group_tasks(relation.id, user.id).pluck(:name)%>
+  <% end %>
+<% end %>
 <br/>
 <%= link_to "back", users_path%>
 <br/>
-<%= link_to "logout", logout_path %>
-
- 
- 
+<%= link_to "logout", logout_path %> 

@@ -1,10 +1,7 @@
-<h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
 <%= params[:relation_id]%>
 <%= current_user.id%>
-
 <%= form_for(@task) do |f| %>
-   <%= hidden_field_tag :relation_id, @relation.id %> 
-   <%= f.text_field :name %>
-   <%= f.submit "Create a task" %>
+  <%= hidden_field_tag :relation_id, @relation.id %>
+  <%= f.text_field :name %>
+  <%= f.submit "Create a task" %>
 <% end %>
